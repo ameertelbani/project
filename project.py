@@ -1,3 +1,4 @@
+
 while True:
     print("WELCOME TO KAZABLANKA RESTURANT \n 1-Mneger \n 2-Waiter \n 3-Exit")
     choice=input("Select Your Role (1-3) :")
@@ -20,30 +21,23 @@ while True:
                             if wname=="":
                                 break
                             fullname = input("Enter The Waiter Fullname :")
-                            age = input("Enter The Waiter age :")
-                            sallery = input("Enter The Waiter sallery :")
-                            file = open("E:\\kz\\manager\\waiters\\" + wname, "w")
-                            file.write(wname)
-                            file.write("\n")
-                            file.write(fullname)
-                            file.write("\n")
-                            file.write(age)
-                            file.write("\n")
-                            file.write(sallery)
-                            file.write("\n")
+                            file = open("E:\\kz\\manager\\waiters\\" + wname+".txt", "w")
+                            dict={wname:fullname}
+                            for i in dict:
+                                file.write(i+":"+dict[i])
                             file.close()
-                            x=open("E:\\kz\\manager\\waiters\\all waiters", "a")
+                            x=open("E:\\kz\\manager\\waiters\\all waiters"+".txt", "a")
                             x.write(wname)
                             x.write("\n")
                             x.close()
 
                     elif choice=="2":
-                        x = open("E:\\kz\\manager\\waiters\\all waiters", "r")
+                        x = open("E:\\kz\\manager\\waiters\\all waiters"+".txt", "r")
                         text=x.read()
                         print(text)
                         x.close()
                         wname = input("Enter The Waiter Username ")
-                        file = open("E:\\kz\\manager\\waiters\\" + wname, "r")
+                        file = open("E:\\kz\\manager\\waiters\\" + wname+".txt", "r")
                         while True:
                             text=file.read()
                             print(text)
@@ -54,21 +48,25 @@ while True:
                             repn = input("enter the new value")
 
                             text=text.replace(repo,repn)
-                            x=open("E:\\kz\\manager\\waiters\\" + wname, 'w')
+                            x=open("E:\\kz\\manager\\waiters\\" + wname+".txt", 'w')
                             x.write(text)
                             x.close()
                         file.close()
                         print("*****Done*****")
 
                     elif choice=="3":
+                        x = open("E:\\kz\\manager\\waiters\\all waiters"+".txt", "r")
+                        text = x.read()
+                        print(text)
+                        x.close()
                         wname = input("Enter The Waiter Username ")
                         import os
-                        os.remove("E:\\kz\\manager\\waiters\\" + wname)
+                        os.remove("E:\\kz\\manager\\waiters\\" + wname+".txt")
 
-                        file=open("E:\\kz\\manager\\waiters\\all waiters", "r")
+                        file=open("E:\\kz\\manager\\waiters\\all waiters"+".txt", "r")
                         text=file.read()
                         text=text.replace(wname,"")
-                        x = open("E:\\kz\\manager\\waiters\\all waiters", 'w')
+                        x = open("E:\\kz\\manager\\waiters\\all waiters"+".txt", 'w')
                         x.write(text)
                         x.close()
 
@@ -101,32 +99,29 @@ while True:
 
                                 if menu_n == "":
                                     break
-                                file = open("e:\\kz\\manager\\food&menus\\menus\\" + menu_n, "w")
+                                file = open("e:\\kz\\manager\\food&menus\\menus\\" + menu_n+".txt", "w")
                                 while True:
                                     food = input("Enter the food name >> Blank for Back")
                                     if food == "":
                                         file.close()
                                         break
                                     foodp = input("Enter "+str(food)+ "'s price")
-                                    file.write(str(food)+":")
-                                    file.write("\n")
-                                    file.write(foodp)
-                                    file.write("\n")
-                                    file.write("*** ***")
-                                    file.write("\n")
-                                x = open("e:\\kz\\manager\\food&menus\\menus\\all menus", "a")
+                                    dict={food:foodp}
+                                    for i in dict:
+                                        file.write(i+":"+dict[i]+"\n")
+                                x = open("e:\\kz\\manager\\food&menus\\menus\\all menus"+".txt", "a")
                                 x.write(menu_n)
                                 x.write("\n")
                                 x.close()
 
 
                         elif choice == "2":
-                            x = open("e:\\kz\\manager\\food&menus\\menus\\all menus", "r")
+                            x = open("e:\\kz\\manager\\food&menus\\menus\\all menus"+".txt", "r")
                             text = x.read()
                             print(text)
                             x.close()
                             mname = input("Enter The Menu's name ")
-                            file = open("e:\\kz\\manager\\food&menus\\menus\\" + mname, "r")
+                            file = open("e:\\kz\\manager\\food&menus\\menus\\" + mname+".txt", "r")
                             while True:
                                 text = file.read()
                                 print(text)
@@ -137,21 +132,25 @@ while True:
                                 repn = input("enter the new value")
 
                                 text = text.replace(repo, repn)
-                                x = open("e:\\kz\\manager\\food&menus\\menus\\" + mname, 'w')
+                                x = open("e:\\kz\\manager\\food&menus\\menus\\" + mname+".txt", 'w')
                                 x.write(text)
                                 x.close()
                             file.close()
                             print("*****Done*****")
 
                         elif choice == "3":
+                            x = open("e:\\kz\\manager\\food&menus\\menus\\all menus" + ".txt", "r")
+                            text = x.read()
+                            print(text)
+                            x.close()
                             mname = input("Enter The menu's name ")
                             import os
-                            os.remove("E:\\kz\\manager\\food&menus\\menus\\" + mname)
+                            os.remove("E:\\kz\\manager\\food&menus\\menus\\" + mname+".txt")
 
-                            file = open("e:\\kz\\manager\\food&menus\\menus\\all menus", "r")
+                            file = open("e:\\kz\\manager\\food&menus\\menus\\all menus"+".txt", "r")
                             text = file.read()
                             text = text.replace(mname, "")
-                            x = open("e:\\kz\\manager\\food&menus\\menus\\all menus", 'w')
+                            x = open("e:\\kz\\manager\\food&menus\\menus\\all menus"+".txt", 'w')
                             x.write(text)
                             x.close()
 
@@ -174,32 +173,29 @@ while True:
 
                     if choice=="1":
                         while True:
-                            file = open("e:\\kz\\manager\\food&menus\\menus\\all menus", "r")
+                            file = open("e:\\kz\\manager\\food&menus\\menus\\all menus"+".txt", "r")
                             text = file.read()
                             print(text)
                             menu = input("Enter the menu >> Blank to exit")
                             if menu!="":
-                                file1=open("e:\\kz\\manager\\food&menus\\menus\\" + menu, "a")
+                                file1=open("e:\\kz\\manager\\food&menus\\menus\\" + menu+".txt", "a")
                             if menu=="":
                                 file1.close()
                                 break
                             fname = input("Enter the food name")
                             fprice = input("Enter the food price")
 
-                            file1.write(str(fname) + ":")
-                            file1.write("\n")
-                            file1.write(fprice)
-                            file1.write("\n")
-                            file1.write("*** ***")
-                            file1.write("\n")
+                            dict = {fname: fprice}
+                            for i in dict:
+                                file1.write(i + ":" + dict[i] + "\n")
 
                     elif choice=="2":
-                        x = open("e:\\kz\\manager\\food&menus\\menus\\all menus", "r")
+                        x = open("e:\\kz\\manager\\food&menus\\menus\\all menus"+".txt", "r")
                         text = x.read()
                         print(text)
                         x.close()
                         mname = input("Enter The Menu's name ")
-                        file = open("e:\\kz\\manager\\food&menus\\menus\\" + mname, "r")
+                        file = open("e:\\kz\\manager\\food&menus\\menus\\" + mname+".txt", "r")
                         while True:
                             text = file.read()
                             print(text)
@@ -210,7 +206,7 @@ while True:
                             repn = input("enter the new value")
 
                             text = text.replace(repo, repn)
-                            x = open("e:\\kz\\manager\\food&menus\\menus\\" + mname, 'w')
+                            x = open("e:\\kz\\manager\\food&menus\\menus\\" + mname+".txt", 'w')
                             x.write(text)
                             x.close()
                         file.close()
@@ -218,14 +214,14 @@ while True:
 
                     elif choice == "3":
                             mname = input("Enter The menu's name ")
-                            file = open("e:\\kz\\manager\\food&menus\\menus\\" + mname, "r")
+                            file = open("e:\\kz\\manager\\food&menus\\menus\\" + mname+".txt", "r")
                             text = file.read()
                             print(text)
                             dfood=input("Enter the food's name")
                             dprice=input("enter the food price")
                             text = text.replace(dprice, "")
                             text = text.replace(dfood, "")
-                            x = open("e:\\kz\\manager\\food&menus\\menus\\" + mname, 'w')
+                            x = open("e:\\kz\\manager\\food&menus\\menus\\" + mname+".txt", 'w')
                             x.write(text)
                             x.close()
                             print(mname, "Has Been Successfully Removed")
@@ -253,8 +249,8 @@ while True:
 
             elif choice == "3":
                 print("======================== \n View Orders \n======================== ")
-                date=input("Enter the date of Orders (dd-mm-yyyy)")
-                x = open("E:\\kz\\waiter\\" + str(date), "r")
+                date=input("Enter the date of Orders (yyy-mm-dd)")
+                x = open("E:\\kz\\waiter\\" + str(date)+".txt", "r")
                 text=x.read()
                 x.close()
                 print(text)
@@ -270,14 +266,16 @@ while True:
                 continue
 
     elif choice=="2":
+        dict={}
         counter=0
-        y=""
-        foodlist = []
+        summ=0
         print("======================== \n Waiters \n======================== ")
         wname = input("Enter Your Username")
-        file = open("E:\\kz\\manager\\waiters\\" + wname, "r")
-        Waiter = file.readline()
-        Waiter = file.readline()
+        file = open("E:\\kz\\manager\\waiters\\" + wname+".txt", "r")
+        for line in file:
+            value=line.split(":")
+            if value[0]==wname:
+                Waiter=value[1]
         file.close()
         while True:
             print("Waiter Options (" + Waiter + ")")
@@ -286,7 +284,7 @@ while True:
 
             if choice == "1":
                 while True:
-                    file = open("e:\\kz\\manager\\food&menus\\menus\\all menus", "r")
+                    file = open("e:\\kz\\manager\\food&menus\\menus\\all menus"+".txt", "r")
                     print(file.read())
                     file.close()
                     menuch = input("Select menu >> blank for back :")
@@ -295,51 +293,45 @@ while True:
 
                     print("*************** \n ", menuch, "menu", "\n***************")
 
-                    file = open("e:\\kz\\manager\\food&menus\\menus\\" + menuch, "r")
-                    print(file.read())
+                    file = open("e:\\kz\\manager\\food&menus\\menus\\" + menuch+".txt", "r")
+                    text=file.read()
+                    print(text)
+                    file.close()
 
+                    file = open("e:\\kz\\manager\\food&menus\\menus\\" + menuch+".txt", "r")
                     foodch = input("Select food :")
-                    foodp = input("Enter the price")
+                    foodp=0
+                    for line in file:
+                        value=line.split(":")
+                        if value[0]==foodch:
+                            foodp=value[1]
+                            break
                     counter += 1
                     text = file.read()
                     file.close()
-                    # start = text.index(foodch)
-                    # x = text[start:text.index("*")]
-                    # z = x[x.index(":"): ]
-                    dict = {"item =": foodch, "price =": foodp}
-                    foodlist.append(dict)
+                    dict[foodch]=int(foodp)
             elif choice == "2":
                 print("Orders in List :")
-                for j in foodlist:
-                    print("=====================")
-                    for i in j:
-                        print(i,j[i])
                 print("=====================")
+                for i in dict:
+                    print("Item :",i)
+                    print("price :",dict[i])
+                    print("=====================")
 
             elif choice == "3":
                 import datetime
                 today = datetime.date.today()
 
-                x = open("E:\\kz\\waiter\\" + str(today), "a")
-                x.write("===================================\n")
+                x = open("E:\\kz\\waiter\\" + str(today)+".txt", "a")
+                x.write("===================================\n \n")
                 x.write("Wailter : "+Waiter+"\n")
-                x.write("Food : \n")
-                con=0
-                for j in foodlist:
-                    for i in j:
-                        if i=="item =":
-                            y=i[con]
-                            x.write("item ="+str(y))
-                            con+=2
-                summ=0
-                y=0
-                x.write("\nprice : \n")
-                for j in foodlist:
-                    for i in j:
-                        if i.isdigit():
-                            summ+=int(j[i])
-                y = ("price =" + str(summ) + "\n")
-                x.write(y)
+                x.write("Food :")
+                for i in dict:
+                    x.write(i+"\n")
+                print("\n")
+                for i in dict:
+                    summ+=dict[i]
+                x.write("price :"+str(summ)+"\n")
                 x.write("===================================")
                 x.close()
                 print("Order Saved sucssefully")
